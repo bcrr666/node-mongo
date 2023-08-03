@@ -4,7 +4,7 @@ const { validateFields } = require('../middlewares/validateFields');
 
 const router = Router();
 
-const { register } = require('../controllers/userController');
+const { register, list } = require('../controllers/userController');
 
 router.post('/', [
     check('name', 'El nombre es obligatorio').not().isEmpty(),
@@ -13,5 +13,7 @@ router.post('/', [
     check('rol').not().isEmpty(), 
     validateFields
 ], register)
+
+router.get('/', list)
 
 module.exports = router;

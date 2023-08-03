@@ -14,6 +14,18 @@ const register = async(req, res = response) => {
     })
 }
 
+const list = async(req = request, res = response) => {
+    const [ users ] = await Promise.all([
+        User.find({})
+    ])
+
+    res.json({
+        'msg': 'Lista de usuarios',
+        users
+    })
+}
+
 module.exports = {
-    register
+    register,
+    list
 }
